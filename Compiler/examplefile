@@ -1,5 +1,22 @@
-convention arr
+conventions {
+	arr
+}
 
 main {
-	hello
+	hello {
+		print : "hello"
+		input
+		if : input = "hello"
+			then {
+				print : "yo"
+			} else-if {
+				if : input = "hey"
+					then {
+						print : "sup"
+			}
+			}
+			else {
+				print : "say waaaaa?"
+			}
+	}
 }
