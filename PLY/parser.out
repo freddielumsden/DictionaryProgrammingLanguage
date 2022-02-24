@@ -1,0 +1,641 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ID
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> expression PLUS expression
+Rule 2     expression -> expression MINUS expression
+Rule 3     expression -> expression TIMES expression
+Rule 4     expression -> expression DIVIDE expression
+Rule 5     expression -> NUMBER LPAREN expression RPAREN
+Rule 6     expression -> LPAREN expression RPAREN
+Rule 7     expression -> MINUS expression
+Rule 8     expression -> NUMBER
+Rule 9     expression -> STRING
+Rule 10    expression -> VAR_NAME ASSIGN expression
+Rule 11    expression -> VAR_NAME
+Rule 12    expression -> PRINT_FUNC ASSIGN expression
+Rule 13    expression -> VAR_NAME ASSIGN INPUT_FUNC
+
+Terminals, with rules where they appear
+
+ASSIGN               : 10 12 13
+DIVIDE               : 4
+ID                   : 
+INPUT_FUNC           : 13
+LPAREN               : 5 6
+MINUS                : 2 7
+NUMBER               : 5 8
+PLUS                 : 1
+PRINT_FUNC           : 12
+RPAREN               : 5 6
+STRING               : 9
+TIMES                : 3
+VAR_NAME             : 10 11 13
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 1 1 2 2 3 3 4 4 5 6 7 10 12 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . expression PLUS expression
+    (2) expression -> . expression MINUS expression
+    (3) expression -> . expression TIMES expression
+    (4) expression -> . expression DIVIDE expression
+    (5) expression -> . NUMBER LPAREN expression RPAREN
+    (6) expression -> . LPAREN expression RPAREN
+    (7) expression -> . MINUS expression
+    (8) expression -> . NUMBER
+    (9) expression -> . STRING
+    (10) expression -> . VAR_NAME ASSIGN expression
+    (11) expression -> . VAR_NAME
+    (12) expression -> . PRINT_FUNC ASSIGN expression
+    (13) expression -> . VAR_NAME ASSIGN INPUT_FUNC
+
+    NUMBER          shift and go to state 3
+    LPAREN          shift and go to state 4
+    MINUS           shift and go to state 2
+    STRING          shift and go to state 5
+    VAR_NAME        shift and go to state 6
+    PRINT_FUNC      shift and go to state 7
+
+    expression                     shift and go to state 1
+
+state 1
+
+    (0) S' -> expression .
+    (1) expression -> expression . PLUS expression
+    (2) expression -> expression . MINUS expression
+    (3) expression -> expression . TIMES expression
+    (4) expression -> expression . DIVIDE expression
+
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+
+
+state 2
+
+    (7) expression -> MINUS . expression
+    (1) expression -> . expression PLUS expression
+    (2) expression -> . expression MINUS expression
+    (3) expression -> . expression TIMES expression
+    (4) expression -> . expression DIVIDE expression
+    (5) expression -> . NUMBER LPAREN expression RPAREN
+    (6) expression -> . LPAREN expression RPAREN
+    (7) expression -> . MINUS expression
+    (8) expression -> . NUMBER
+    (9) expression -> . STRING
+    (10) expression -> . VAR_NAME ASSIGN expression
+    (11) expression -> . VAR_NAME
+    (12) expression -> . PRINT_FUNC ASSIGN expression
+    (13) expression -> . VAR_NAME ASSIGN INPUT_FUNC
+
+    NUMBER          shift and go to state 3
+    LPAREN          shift and go to state 4
+    MINUS           shift and go to state 2
+    STRING          shift and go to state 5
+    VAR_NAME        shift and go to state 6
+    PRINT_FUNC      shift and go to state 7
+
+    expression                     shift and go to state 12
+
+state 3
+
+    (5) expression -> NUMBER . LPAREN expression RPAREN
+    (8) expression -> NUMBER .
+
+    LPAREN          shift and go to state 13
+    PLUS            reduce using rule 8 (expression -> NUMBER .)
+    MINUS           reduce using rule 8 (expression -> NUMBER .)
+    TIMES           reduce using rule 8 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 8 (expression -> NUMBER .)
+    $end            reduce using rule 8 (expression -> NUMBER .)
+    RPAREN          reduce using rule 8 (expression -> NUMBER .)
+
+
+state 4
+
+    (6) expression -> LPAREN . expression RPAREN
+    (1) expression -> . expression PLUS expression
+    (2) expression -> . expression MINUS expression
+    (3) expression -> . expression TIMES expression
+    (4) expression -> . expression DIVIDE expression
+    (5) expression -> . NUMBER LPAREN expression RPAREN
+    (6) expression -> . LPAREN expression RPAREN
+    (7) expression -> . MINUS expression
+    (8) expression -> . NUMBER
+    (9) expression -> . STRING
+    (10) expression -> . VAR_NAME ASSIGN expression
+    (11) expression -> . VAR_NAME
+    (12) expression -> . PRINT_FUNC ASSIGN expression
+    (13) expression -> . VAR_NAME ASSIGN INPUT_FUNC
+
+    NUMBER          shift and go to state 3
+    LPAREN          shift and go to state 4
+    MINUS           shift and go to state 2
+    STRING          shift and go to state 5
+    VAR_NAME        shift and go to state 6
+    PRINT_FUNC      shift and go to state 7
+
+    expression                     shift and go to state 14
+
+state 5
+
+    (9) expression -> STRING .
+
+    PLUS            reduce using rule 9 (expression -> STRING .)
+    MINUS           reduce using rule 9 (expression -> STRING .)
+    TIMES           reduce using rule 9 (expression -> STRING .)
+    DIVIDE          reduce using rule 9 (expression -> STRING .)
+    $end            reduce using rule 9 (expression -> STRING .)
+    RPAREN          reduce using rule 9 (expression -> STRING .)
+
+
+state 6
+
+    (10) expression -> VAR_NAME . ASSIGN expression
+    (11) expression -> VAR_NAME .
+    (13) expression -> VAR_NAME . ASSIGN INPUT_FUNC
+
+    ASSIGN          shift and go to state 15
+    PLUS            reduce using rule 11 (expression -> VAR_NAME .)
+    MINUS           reduce using rule 11 (expression -> VAR_NAME .)
+    TIMES           reduce using rule 11 (expression -> VAR_NAME .)
+    DIVIDE          reduce using rule 11 (expression -> VAR_NAME .)
+    $end            reduce using rule 11 (expression -> VAR_NAME .)
+    RPAREN          reduce using rule 11 (expression -> VAR_NAME .)
+
+
+state 7
+
+    (12) expression -> PRINT_FUNC . ASSIGN expression
+
+    ASSIGN          shift and go to state 16
+
+
+state 8
+
+    (1) expression -> expression PLUS . expression
+    (1) expression -> . expression PLUS expression
+    (2) expression -> . expression MINUS expression
+    (3) expression -> . expression TIMES expression
+    (4) expression -> . expression DIVIDE expression
+    (5) expression -> . NUMBER LPAREN expression RPAREN
+    (6) expression -> . LPAREN expression RPAREN
+    (7) expression -> . MINUS expression
+    (8) expression -> . NUMBER
+    (9) expression -> . STRING
+    (10) expression -> . VAR_NAME ASSIGN expression
+    (11) expression -> . VAR_NAME
+    (12) expression -> . PRINT_FUNC ASSIGN expression
+    (13) expression -> . VAR_NAME ASSIGN INPUT_FUNC
+
+    NUMBER          shift and go to state 3
+    LPAREN          shift and go to state 4
+    MINUS           shift and go to state 2
+    STRING          shift and go to state 5
+    VAR_NAME        shift and go to state 6
+    PRINT_FUNC      shift and go to state 7
+
+    expression                     shift and go to state 17
+
+state 9
+
+    (2) expression -> expression MINUS . expression
+    (1) expression -> . expression PLUS expression
+    (2) expression -> . expression MINUS expression
+    (3) expression -> . expression TIMES expression
+    (4) expression -> . expression DIVIDE expression
+    (5) expression -> . NUMBER LPAREN expression RPAREN
+    (6) expression -> . LPAREN expression RPAREN
+    (7) expression -> . MINUS expression
+    (8) expression -> . NUMBER
+    (9) expression -> . STRING
+    (10) expression -> . VAR_NAME ASSIGN expression
+    (11) expression -> . VAR_NAME
+    (12) expression -> . PRINT_FUNC ASSIGN expression
+    (13) expression -> . VAR_NAME ASSIGN INPUT_FUNC
+
+    NUMBER          shift and go to state 3
+    LPAREN          shift and go to state 4
+    MINUS           shift and go to state 2
+    STRING          shift and go to state 5
+    VAR_NAME        shift and go to state 6
+    PRINT_FUNC      shift and go to state 7
+
+    expression                     shift and go to state 18
+
+state 10
+
+    (3) expression -> expression TIMES . expression
+    (1) expression -> . expression PLUS expression
+    (2) expression -> . expression MINUS expression
+    (3) expression -> . expression TIMES expression
+    (4) expression -> . expression DIVIDE expression
+    (5) expression -> . NUMBER LPAREN expression RPAREN
+    (6) expression -> . LPAREN expression RPAREN
+    (7) expression -> . MINUS expression
+    (8) expression -> . NUMBER
+    (9) expression -> . STRING
+    (10) expression -> . VAR_NAME ASSIGN expression
+    (11) expression -> . VAR_NAME
+    (12) expression -> . PRINT_FUNC ASSIGN expression
+    (13) expression -> . VAR_NAME ASSIGN INPUT_FUNC
+
+    NUMBER          shift and go to state 3
+    LPAREN          shift and go to state 4
+    MINUS           shift and go to state 2
+    STRING          shift and go to state 5
+    VAR_NAME        shift and go to state 6
+    PRINT_FUNC      shift and go to state 7
+
+    expression                     shift and go to state 19
+
+state 11
+
+    (4) expression -> expression DIVIDE . expression
+    (1) expression -> . expression PLUS expression
+    (2) expression -> . expression MINUS expression
+    (3) expression -> . expression TIMES expression
+    (4) expression -> . expression DIVIDE expression
+    (5) expression -> . NUMBER LPAREN expression RPAREN
+    (6) expression -> . LPAREN expression RPAREN
+    (7) expression -> . MINUS expression
+    (8) expression -> . NUMBER
+    (9) expression -> . STRING
+    (10) expression -> . VAR_NAME ASSIGN expression
+    (11) expression -> . VAR_NAME
+    (12) expression -> . PRINT_FUNC ASSIGN expression
+    (13) expression -> . VAR_NAME ASSIGN INPUT_FUNC
+
+    NUMBER          shift and go to state 3
+    LPAREN          shift and go to state 4
+    MINUS           shift and go to state 2
+    STRING          shift and go to state 5
+    VAR_NAME        shift and go to state 6
+    PRINT_FUNC      shift and go to state 7
+
+    expression                     shift and go to state 20
+
+state 12
+
+    (7) expression -> MINUS expression .
+    (1) expression -> expression . PLUS expression
+    (2) expression -> expression . MINUS expression
+    (3) expression -> expression . TIMES expression
+    (4) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 7 (expression -> MINUS expression .)
+    RPAREN          reduce using rule 7 (expression -> MINUS expression .)
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+
+  ! PLUS            [ reduce using rule 7 (expression -> MINUS expression .) ]
+  ! MINUS           [ reduce using rule 7 (expression -> MINUS expression .) ]
+  ! TIMES           [ reduce using rule 7 (expression -> MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 7 (expression -> MINUS expression .) ]
+
+
+state 13
+
+    (5) expression -> NUMBER LPAREN . expression RPAREN
+    (1) expression -> . expression PLUS expression
+    (2) expression -> . expression MINUS expression
+    (3) expression -> . expression TIMES expression
+    (4) expression -> . expression DIVIDE expression
+    (5) expression -> . NUMBER LPAREN expression RPAREN
+    (6) expression -> . LPAREN expression RPAREN
+    (7) expression -> . MINUS expression
+    (8) expression -> . NUMBER
+    (9) expression -> . STRING
+    (10) expression -> . VAR_NAME ASSIGN expression
+    (11) expression -> . VAR_NAME
+    (12) expression -> . PRINT_FUNC ASSIGN expression
+    (13) expression -> . VAR_NAME ASSIGN INPUT_FUNC
+
+    NUMBER          shift and go to state 3
+    LPAREN          shift and go to state 4
+    MINUS           shift and go to state 2
+    STRING          shift and go to state 5
+    VAR_NAME        shift and go to state 6
+    PRINT_FUNC      shift and go to state 7
+
+    expression                     shift and go to state 21
+
+state 14
+
+    (6) expression -> LPAREN expression . RPAREN
+    (1) expression -> expression . PLUS expression
+    (2) expression -> expression . MINUS expression
+    (3) expression -> expression . TIMES expression
+    (4) expression -> expression . DIVIDE expression
+
+    RPAREN          shift and go to state 22
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+
+
+state 15
+
+    (10) expression -> VAR_NAME ASSIGN . expression
+    (13) expression -> VAR_NAME ASSIGN . INPUT_FUNC
+    (1) expression -> . expression PLUS expression
+    (2) expression -> . expression MINUS expression
+    (3) expression -> . expression TIMES expression
+    (4) expression -> . expression DIVIDE expression
+    (5) expression -> . NUMBER LPAREN expression RPAREN
+    (6) expression -> . LPAREN expression RPAREN
+    (7) expression -> . MINUS expression
+    (8) expression -> . NUMBER
+    (9) expression -> . STRING
+    (10) expression -> . VAR_NAME ASSIGN expression
+    (11) expression -> . VAR_NAME
+    (12) expression -> . PRINT_FUNC ASSIGN expression
+    (13) expression -> . VAR_NAME ASSIGN INPUT_FUNC
+
+    INPUT_FUNC      shift and go to state 24
+    NUMBER          shift and go to state 3
+    LPAREN          shift and go to state 4
+    MINUS           shift and go to state 2
+    STRING          shift and go to state 5
+    VAR_NAME        shift and go to state 6
+    PRINT_FUNC      shift and go to state 7
+
+    expression                     shift and go to state 23
+
+state 16
+
+    (12) expression -> PRINT_FUNC ASSIGN . expression
+    (1) expression -> . expression PLUS expression
+    (2) expression -> . expression MINUS expression
+    (3) expression -> . expression TIMES expression
+    (4) expression -> . expression DIVIDE expression
+    (5) expression -> . NUMBER LPAREN expression RPAREN
+    (6) expression -> . LPAREN expression RPAREN
+    (7) expression -> . MINUS expression
+    (8) expression -> . NUMBER
+    (9) expression -> . STRING
+    (10) expression -> . VAR_NAME ASSIGN expression
+    (11) expression -> . VAR_NAME
+    (12) expression -> . PRINT_FUNC ASSIGN expression
+    (13) expression -> . VAR_NAME ASSIGN INPUT_FUNC
+
+    NUMBER          shift and go to state 3
+    LPAREN          shift and go to state 4
+    MINUS           shift and go to state 2
+    STRING          shift and go to state 5
+    VAR_NAME        shift and go to state 6
+    PRINT_FUNC      shift and go to state 7
+
+    expression                     shift and go to state 25
+
+state 17
+
+    (1) expression -> expression PLUS expression .
+    (1) expression -> expression . PLUS expression
+    (2) expression -> expression . MINUS expression
+    (3) expression -> expression . TIMES expression
+    (4) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 1 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 1 (expression -> expression PLUS expression .)
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+
+  ! PLUS            [ reduce using rule 1 (expression -> expression PLUS expression .) ]
+  ! MINUS           [ reduce using rule 1 (expression -> expression PLUS expression .) ]
+  ! TIMES           [ reduce using rule 1 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 1 (expression -> expression PLUS expression .) ]
+
+
+state 18
+
+    (2) expression -> expression MINUS expression .
+    (1) expression -> expression . PLUS expression
+    (2) expression -> expression . MINUS expression
+    (3) expression -> expression . TIMES expression
+    (4) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 2 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 2 (expression -> expression MINUS expression .)
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+
+  ! PLUS            [ reduce using rule 2 (expression -> expression MINUS expression .) ]
+  ! MINUS           [ reduce using rule 2 (expression -> expression MINUS expression .) ]
+  ! TIMES           [ reduce using rule 2 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 2 (expression -> expression MINUS expression .) ]
+
+
+state 19
+
+    (3) expression -> expression TIMES expression .
+    (1) expression -> expression . PLUS expression
+    (2) expression -> expression . MINUS expression
+    (3) expression -> expression . TIMES expression
+    (4) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 3 (expression -> expression TIMES expression .)
+    RPAREN          reduce using rule 3 (expression -> expression TIMES expression .)
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+
+  ! PLUS            [ reduce using rule 3 (expression -> expression TIMES expression .) ]
+  ! MINUS           [ reduce using rule 3 (expression -> expression TIMES expression .) ]
+  ! TIMES           [ reduce using rule 3 (expression -> expression TIMES expression .) ]
+  ! DIVIDE          [ reduce using rule 3 (expression -> expression TIMES expression .) ]
+
+
+state 20
+
+    (4) expression -> expression DIVIDE expression .
+    (1) expression -> expression . PLUS expression
+    (2) expression -> expression . MINUS expression
+    (3) expression -> expression . TIMES expression
+    (4) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 4 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 4 (expression -> expression DIVIDE expression .)
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+
+  ! PLUS            [ reduce using rule 4 (expression -> expression DIVIDE expression .) ]
+  ! MINUS           [ reduce using rule 4 (expression -> expression DIVIDE expression .) ]
+  ! TIMES           [ reduce using rule 4 (expression -> expression DIVIDE expression .) ]
+  ! DIVIDE          [ reduce using rule 4 (expression -> expression DIVIDE expression .) ]
+
+
+state 21
+
+    (5) expression -> NUMBER LPAREN expression . RPAREN
+    (1) expression -> expression . PLUS expression
+    (2) expression -> expression . MINUS expression
+    (3) expression -> expression . TIMES expression
+    (4) expression -> expression . DIVIDE expression
+
+    RPAREN          shift and go to state 26
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+
+
+state 22
+
+    (6) expression -> LPAREN expression RPAREN .
+
+    PLUS            reduce using rule 6 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 6 (expression -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 6 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 6 (expression -> LPAREN expression RPAREN .)
+    $end            reduce using rule 6 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 6 (expression -> LPAREN expression RPAREN .)
+
+
+state 23
+
+    (10) expression -> VAR_NAME ASSIGN expression .
+    (1) expression -> expression . PLUS expression
+    (2) expression -> expression . MINUS expression
+    (3) expression -> expression . TIMES expression
+    (4) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 10 (expression -> VAR_NAME ASSIGN expression .)
+    RPAREN          reduce using rule 10 (expression -> VAR_NAME ASSIGN expression .)
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+
+  ! PLUS            [ reduce using rule 10 (expression -> VAR_NAME ASSIGN expression .) ]
+  ! MINUS           [ reduce using rule 10 (expression -> VAR_NAME ASSIGN expression .) ]
+  ! TIMES           [ reduce using rule 10 (expression -> VAR_NAME ASSIGN expression .) ]
+  ! DIVIDE          [ reduce using rule 10 (expression -> VAR_NAME ASSIGN expression .) ]
+
+
+state 24
+
+    (13) expression -> VAR_NAME ASSIGN INPUT_FUNC .
+
+    PLUS            reduce using rule 13 (expression -> VAR_NAME ASSIGN INPUT_FUNC .)
+    MINUS           reduce using rule 13 (expression -> VAR_NAME ASSIGN INPUT_FUNC .)
+    TIMES           reduce using rule 13 (expression -> VAR_NAME ASSIGN INPUT_FUNC .)
+    DIVIDE          reduce using rule 13 (expression -> VAR_NAME ASSIGN INPUT_FUNC .)
+    $end            reduce using rule 13 (expression -> VAR_NAME ASSIGN INPUT_FUNC .)
+    RPAREN          reduce using rule 13 (expression -> VAR_NAME ASSIGN INPUT_FUNC .)
+
+
+state 25
+
+    (12) expression -> PRINT_FUNC ASSIGN expression .
+    (1) expression -> expression . PLUS expression
+    (2) expression -> expression . MINUS expression
+    (3) expression -> expression . TIMES expression
+    (4) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 12 (expression -> PRINT_FUNC ASSIGN expression .)
+    RPAREN          reduce using rule 12 (expression -> PRINT_FUNC ASSIGN expression .)
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 10
+    DIVIDE          shift and go to state 11
+
+  ! PLUS            [ reduce using rule 12 (expression -> PRINT_FUNC ASSIGN expression .) ]
+  ! MINUS           [ reduce using rule 12 (expression -> PRINT_FUNC ASSIGN expression .) ]
+  ! TIMES           [ reduce using rule 12 (expression -> PRINT_FUNC ASSIGN expression .) ]
+  ! DIVIDE          [ reduce using rule 12 (expression -> PRINT_FUNC ASSIGN expression .) ]
+
+
+state 26
+
+    (5) expression -> NUMBER LPAREN expression RPAREN .
+
+    PLUS            reduce using rule 5 (expression -> NUMBER LPAREN expression RPAREN .)
+    MINUS           reduce using rule 5 (expression -> NUMBER LPAREN expression RPAREN .)
+    TIMES           reduce using rule 5 (expression -> NUMBER LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 5 (expression -> NUMBER LPAREN expression RPAREN .)
+    $end            reduce using rule 5 (expression -> NUMBER LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 5 (expression -> NUMBER LPAREN expression RPAREN .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 12 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 12 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 12 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 12 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 17 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 17 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 17 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 17 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 18 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 18 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 18 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 18 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 19 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 19 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 19 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 19 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 20 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 20 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 20 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 20 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 23 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 23 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 23 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 23 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 25 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 25 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 25 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 25 resolved as shift

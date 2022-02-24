@@ -18,8 +18,9 @@ class Dictionary:
 
 
 def converter(file):
-	builtins = ["if", "else-if", "else", "not", "{", "}"]
-	for line in file:
-		if "{" in line:
-			name_pos
-			locals()[line.index("{")-1] = Dictionary()
+	pass
+	#builtins = ["if", "else-if", "else", "not", "{", "}"]
+	# for line in file:
+	# 	if "{" in line:
+	# 		name_pos
+	#		locals()[line.index("{")-1] = Dictionary()
