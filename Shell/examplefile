@@ -1,0 +1,20 @@
+conventions {
+	arr
+}
+
+main {
+	hello {
+		print : "hello"
+		a : input
+		if : input = "hello" {
+			then
+				print : "yo"
+			else-if
+				if : input = "hey"
+					then
+						print : "sup"
+			
+			else print : "say waaaaa?"
+		}
+	
+}
