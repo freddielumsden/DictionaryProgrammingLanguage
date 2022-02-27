@@ -1,4 +1,6 @@
 conventions {
+	eol,
+	var,
 	arr
 }
 
