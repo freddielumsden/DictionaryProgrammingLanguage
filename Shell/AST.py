@@ -19,18 +19,16 @@ def ast(tokenized_line):
     return main
 
 
-def prettifyAst(ast):
+def prettifyAst(ast, starting_tabs=""):
     string_ast = ""
-    tabs = ""
+    tabs = starting_tabs
     for i in ast:
         if isinstance(i, tuple):
-            if i[0] == "O_BRACKET":
-                tabs += "\t"
-            elif i[0] == "C_BRACKET":
-                tabs = tabs[:-1]
             string_ast += tabs + i[0] + " : " + i[1] + "\n"
         else:
-            string_ast += prettifyAst(i)
+            tabs += "\t"
+            string_ast += tabs + "[\n" + prettifyAst(i, tabs) + tabs + "]\n"
+            tabs = tabs[:-1]
     return string_ast
 
 
@@ -43,4 +41,4 @@ if __name__ == '__main__':
         if tokenized_line:
             main = ast(tokenized_line)
             pretty_ast = prettifyAst(main)
-            print(pretty_ast)
+            print(pretty_ast, end='')
