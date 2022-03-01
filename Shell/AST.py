@@ -1,4 +1,5 @@
 import throw_error
+import os
 
 
 def ast(tokenized_line):
@@ -19,7 +20,27 @@ def ast(tokenized_line):
     return main
 
 
-def prettifyAst(ast, starting_tabs=""):
+def sortAstDepth(ast, out=[], depth=0):
+    if len(out) <= depth:
+        out += [[]for _ in range(depth-len(out) + 1)]
+    for i in ast:
+        if isinstance(i, list):
+            sortAstDepth(i, out=out, depth=depth+1)
+        else:
+            out[depth].append(i)
+    return out
+
+
+def verticalOrder(ast):
+    sorted_ast = sortAstDepth(ast)
+    string_ast = ""
+    for i in sorted_ast:
+        line = ", ".join([j[0] + ":" + j[1] for j in i])
+        string_ast += line + "\n"
+    return string_ast
+
+
+def horizontalAst(ast, starting_tabs=""):
     string_ast = ""
     tabs = starting_tabs
     for i in ast:
@@ -27,7 +48,7 @@ def prettifyAst(ast, starting_tabs=""):
             string_ast += tabs + i[0] + " : " + i[1] + "\n"
         else:
             tabs += "\t"
-            string_ast += tabs + "[\n" + prettifyAst(i, tabs) + tabs + "]\n"
+            string_ast += tabs + "[\n" + horizontalAst(i, tabs) + tabs + "]\n"
             tabs = tabs[:-1]
     return string_ast
 
@@ -40,5 +61,6 @@ if __name__ == '__main__':
         tokenized_line = lexer.lex(line)
         if tokenized_line:
             main = ast(tokenized_line)
-            pretty_ast = prettifyAst(main)
-            print(pretty_ast, end='')
+            vertical_order = verticalOrder(main)
+            pretty_ast = horizontalAst(main)
+            print("Order:\n" + vertical_order + "\nVertical AST\n" + pretty_ast, end='')
