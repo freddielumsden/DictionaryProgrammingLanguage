@@ -35,7 +35,7 @@ def verticalOrder(ast):
     sorted_ast = sortAstDepth(ast)
     string_ast = ""
     for i in sorted_ast:
-        line = ", ".join([j[0] + ":" + j[1] for j in i])
+        line = ", ".join([j[0] + " : " + j[1] for j in i])
         string_ast += line + "\n"
     return string_ast
 
@@ -63,4 +63,4 @@ if __name__ == '__main__':
             main = ast(tokenized_line)
             vertical_order = verticalOrder(main)
             pretty_ast = horizontalAst(main)
-            print("Order:\n" + vertical_order + "\nVertical AST\n" + pretty_ast, end='')
+            print("Order\n" + vertical_order + "\nVertical AST\n" + pretty_ast, end='')
